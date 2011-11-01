@@ -1,0 +1,23 @@
+{
+  "name": "doom",
+  "description": "DOOM templating engine",
+  "version": "0.0.1",
+  "author": "Tobiasz Cudnik <tobiasz.cudnik@gmail.com>",
+  "contributors": [
+  ],
+  "dependencies": {
+    "flow": ">=0.2.2",
+    "coffee-script": ">=1.1.1",
+    "jsdom": ">=0.2.7",
+	  "logging": ">=2.0.11"
+  },
+  "devDependencies": {
+  },
+  "keywords": ["templates", "dom", "html", "css", "jquery"],
+  "repository": "git://github.com/",
+  "main": "index",
+  "bin": { },
+  "scripts": {
+  },
+  "engines": { "node": ">= 0.4.1" }
+}
