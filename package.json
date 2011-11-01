@@ -1,23 +1,23 @@
 {
-  "name": "doom",
-  "description": "DOOM templating engine",
-  "version": "0.0.1",
-  "author": "Tobiasz Cudnik <tobiasz.cudnik@gmail.com>",
-  "contributors": [
-  ],
-  "dependencies": {
-    "coffee-script": ">=1.1.1",
-    "jsdom": ">=0.2.7",
-	  "logging": ">=2.0.11",
-	  "underscore": ">=1.2.1"
-  },
-  "devDependencies": {
-  },
-  "keywords": ["templates", "dom", "html", "css", "jquery"],
-  "repository": "git://github.com/",
-  "main": "index",
-  "bin": { },
-  "scripts": {
-  },
-  "engines": { "node": ">= 0.4.1" }
+	"name": "doom",
+	"description": "DOM powered templating engine using jQuery.",
+	"version": "0.0.1",
+	"author": "Tobiasz Cudnik <tobiasz.cudnik@gmail.com>",
+	"contributors": [
+	],
+	"dependencies": {
+		"coffee-script": ">=1.1.1",
+		"jsdom": ">=0.2.7",
+		"logging": ">=2.0.11",
+		"underscore": ">=1.2.1"
+	},
+	"devDependencies": {
+	},
+	"keywords": ["templates", "dom", "html", "css", "jquery"],
+	"repository": "git://github.com/",
+	"main": "index",
+	"bin": { },
+	"scripts": {
+	},
+	"engines": { "node": ">= 0.4.1" }
 }
