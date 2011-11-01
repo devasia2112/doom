@@ -1,6 +1,6 @@
 {
 	"name": "doom",
-	"description": "DOM powered templating engine using jQuery.",
+	"description": "DOM powered templates with pure HTMLs and jQuery.",
 	"version": "0.0.1",
 	"author": "Tobiasz Cudnik <tobiasz.cudnik@gmail.com>",
 	"contributors": [
