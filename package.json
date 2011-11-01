@@ -6,10 +6,10 @@
   "contributors": [
   ],
   "dependencies": {
-    "flow": ">=0.2.2",
     "coffee-script": ">=1.1.1",
     "jsdom": ">=0.2.7",
-	  "logging": ">=2.0.11"
+	  "logging": ">=2.0.11",
+	  "underscore": ">=1.2.1"
   },
   "devDependencies": {
   },
