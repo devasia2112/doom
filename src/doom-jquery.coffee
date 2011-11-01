@@ -1,4 +1,5 @@
-DEBUG = false
+DEBUG = true || global.DEBUG
+
 _ = require 'underscore'
 if DEBUG
 	log = require('logging').from __filename
@@ -8,11 +9,10 @@ else
 jquery = (obj) -> obj.constructor
 
 valuesToSelector = (target, values, selector_pattern, skip_fields, field_callback) ->
-
 	# define
 	$ = jquery(@)
 	selector_pattern ?= '.%k'
-	original_taret = target
+	original_target = target
 	target_data = null
 
 	# support target arguments
@@ -35,7 +35,7 @@ valuesToSelector = (target, values, selector_pattern, skip_fields, field_callbac
 	if not $.isFunction fieldCallback
 		fieldCallback = null
 
-	for k in values
+	for k, v of values
 
 		continue if skip_fields? and k in skip_fields
 
@@ -44,7 +44,7 @@ valuesToSelector = (target, values, selector_pattern, skip_fields, field_callbac
 			v = v()
 
 		# TODO @todoc
-		node = if selector_pattern == true then @ else @find selector_pattern.replace '%k', k
+		node = @find selector_pattern.replace '%k', k
 
 		switch target
 			when 'attr'
@@ -53,7 +53,7 @@ valuesToSelector = (target, values, selector_pattern, skip_fields, field_callbac
 				node[target] v
 
 		if field_callback
-			field_callback.call node, k, original_taret
+			field_callback.call node, k, original_target
 
 	@
 
@@ -101,7 +101,7 @@ valuesToLoop = (nodes, values, rowCallback, targetNodeSelector, target) ->
 	nodeTarget = null
 	lastNode = nodes
 
-	injectMethod = "insert#{target.slice(0, 1).toUpperCase()}#{target.slice 1}"
+	injectMethod = "insert#{target[0...1].toUpperCase()}#{target.slice 1}"
 	for v, k in values
 		$( lastNode.get().reverse() ).each ->
 			# TODO check this
@@ -224,6 +224,10 @@ JqueryMultiDocMixin =
 	replaceWith: (fn, nodes) ->
 		fn.call @, @_importNodes nodes, @
 
+"""
+Extend jQuery with our templating methods.
+@TODO provide method signatures, instead of `args...`.
+"""
 DoomJqueryMixin =
 
 	valuesToLoop: (values, rowCallback, targetNodeSelector) ->

@@ -2,7 +2,7 @@
 Very early version of new QueryTemplates.
 ###
 
-DEBUG = false
+DEBUG = true || global.DEBUG
 
 doom_jquery = require './src/doom-jquery'
 flow = require './libs/object-flow/flow'
