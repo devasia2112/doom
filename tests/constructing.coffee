@@ -1,5 +1,5 @@
 doom = require '../doom'
-flow = require 'flow'
+flow = require '../libs/object-flow/flow'
 log = require('logging').from __filename
 
 module.exports =

@@ -5,7 +5,7 @@ Very early version of new QueryTemplates.
 DEBUG = false
 
 doom_jquery = require './src/doom-jquery'
-flow = require './libs/object-flow'
+flow = require './libs/object-flow/flow'
 dom = require 'jsdom'
 fs = require 'fs'
 

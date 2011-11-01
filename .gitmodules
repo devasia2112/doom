@@ -1,0 +1,3 @@
+[submodule "libs/object-flow"]
+	path = libs/object-flow
+	url = git@github.com:TobiaszCudnik/flow-js.git
