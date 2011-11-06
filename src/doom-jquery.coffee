@@ -189,7 +189,6 @@ JqueryMultiDocMixin =
 		for node in nodes
 			if target_doc isnt node._ownerDocument
 #				log "Importing #{whoisNode.call @, node}"
-				debugger
 				result.push target_doc.importNode node, true
 #				log result[ result.length-1 ]._ownerDocument == target_doc
 			else

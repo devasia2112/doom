@@ -14,8 +14,8 @@
 	"devDependencies": {
 	},
 	"keywords": ["templates", "dom", "html", "css", "jquery"],
-	"repository": "git://github.com/",
-	"main": "index",
+	"repository": "git@github.com:TobiaszCudnik/doom.git",
+	"main": "doom.coffee",
 	"bin": { },
 	"scripts": {
 	},

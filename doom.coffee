@@ -8,6 +8,7 @@ doom_jquery = require './src/doom-jquery'
 flow = require './libs/object-flow/flow'
 dom = require 'jsdom'
 fs = require 'fs'
+_ = require 'underscore'
 
 if DEBUG
 	log = require('logging').from __filename
@@ -21,10 +22,10 @@ class Template
 			@dom = null
 
       # filter out empty args
-			args = args.filter (v, k) -> v if k?
+			args = _.compact args
 
-			@next = args[ args.length-1 ]
-			@args = args[ 0...args.length-1 ]
+			@next = _.last args
+			@args = _.initial args
 #			@args = args[ 0...args.length-1 ]
 
 			log "opening file #{@args[0]}"
@@ -76,7 +77,8 @@ class Template
 
 # extend prototype
 Template.extendDomWindow = (doc) ->
-	doc.str = -> ( @doctype || '' ).toString() + @document.outerHTML
+	doc.str = -> ( @document.doctype || '' ).toString() + @document.outerHTML
+	doc.fragment = -> @$('body > *')
 
 module.exports =
 	###
@@ -86,6 +88,28 @@ module.exports =
 	getTemplate: flow.define(
 		(args...) -> new Template args[0], args[1], args[2], args[3]
 	)
+
+	getCacheOrTemplate: flow.define(
+		(container, prop_name, args...) ->
+			ret = container[prop_name]
+			return ret if ret?
+			new Template args[0], args[1], args[2], args[3]
+	)
+
+	getCacheOrTemplateFromFlow: flow.define(
+		(resource, args...) ->
+			[ res_flow, next, name ] = [ resource[0], resource[1], resource[2] ]
+
+			ret = res_flow?[name] || res_flow.this?[name]
+			return ret if ret?
+
+			new Template args[0], args[1], args[2], args[3]
+	)
 	Template: Template
 
-module.exports.get = module.exports.getTemplate
+_.extend(
+	module.exports,
+		get: module.exports.getTemplate
+		getCache: module.exports.getCacheOrTemplate
+		resDom: module.exports.getCacheOrTemplateFromFlow
+)
